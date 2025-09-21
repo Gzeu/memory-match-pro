@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "memory-match-pro",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "rewrites": [
@@ -36,7 +35,7 @@
       ]
     },
     {
-      "source": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|json|woff2|woff|ttf|eot|mp3|wav|ogg))",
+      "source": "/.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|json|woff2|woff|ttf|eot|mp3|wav|ogg)$",
       "headers": [
         {
           "key": "Cache-Control",
