@@ -1,17 +1,26 @@
 {
   "version": 2,
   "name": "memory-match-pro",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "routes": [
     {
-      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|json))",
-      "dest": "/src/$1",
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|json|woff2|woff|ttf|eot|mp3|wav|ogg))",
+      "dest": "/$1",
       "headers": {
         "Cache-Control": "public, max-age=31536000, immutable"
       }
     },
     {
       "src": "/(.*)",
-      "dest": "/src/index.html"
+      "dest": "/index.html"
     }
   ],
   "headers": [
@@ -49,5 +58,7 @@
         }
       ]
     }
-  ]
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }
