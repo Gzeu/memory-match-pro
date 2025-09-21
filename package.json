@@ -18,7 +18,8 @@
     "serve": "http-server dist -p 3000 -o",
     "analyze": "webpack-bundle-analyzer dist/stats.json",
     "deploy": "npm run build && gh-pages -d dist",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "vercel-build": "npm run build"
   },
   "keywords": [
     "memory-game",
@@ -28,18 +29,22 @@
     "card-matching",
     "puzzle-game",
     "es6",
-    "webpack"
+    "webpack",
+    "vercel",
+    "pwa"
   ],
   "author": "Gzeu",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.22.0",
+    "@babel/preset-env": "^7.22.0",
+    "babel-loader": "^9.1.0",
     "webpack": "^5.88.0",
     "webpack-cli": "^5.1.0",
     "webpack-dev-server": "^4.15.0",
     "html-webpack-plugin": "^5.5.0",
     "css-loader": "^6.8.0",
     "style-loader": "^3.3.0",
-    "file-loader": "^6.2.0",
     "copy-webpack-plugin": "^11.0.0",
     "terser-webpack-plugin": "^5.3.0",
     "css-minimizer-webpack-plugin": "^5.0.0",
@@ -70,5 +75,13 @@
   "engines": {
     "node": ">=16.0.0",
     "npm": ">=8.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gzeu/memory-match-pro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gzeu/memory-match-pro/issues"
+  },
+  "homepage": "https://memory-match-pro.vercel.app"
 }
