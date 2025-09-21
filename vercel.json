@@ -17,7 +17,7 @@
           "value": "nosniff"
         },
         {
-          "key": "X-Frame-Options",
+          "key": "X-Frame-Options", 
           "value": "DENY"
         },
         {
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "source": "/.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|json|woff2|woff|ttf|eot|mp3|wav|ogg)$",
+      "source": "/**/*.(css|js|png|jpg|jpeg|gif|svg|ico|json|woff2|woff|ttf|eot|mp3|wav|ogg)",
       "headers": [
         {
           "key": "Cache-Control",
