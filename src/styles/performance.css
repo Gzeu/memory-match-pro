@@ -1,0 +1,149 @@
+/* Optimizări pentru performanță */
+
+/* Hardware acceleration pentru animații */
+.card,
+.primary-btn,
+.modal,
+.game-canvas {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Preload critical fonts */
+@font-face {
+    font-family: 'Game Font';
+    src: url('../fonts/game-font.woff2') format('woff2');
+    font-display: swap;
+}
+
+/* Lazy loading pentru imagini */
+img {
+    loading: lazy;
+}
+
+/* Optimizare pentru touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .card:hover {
+        transform: none;
+    }
+    
+    .primary-btn:hover {
+        transform: none;
+    }
+    
+    .menu-button:hover {
+        transform: none;
+    }
+}
+
+/* Reduce animații pe dispozitive cu baterie slabă */
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition-duration: 0.2s;
+    }
+    
+    .modal {
+        transition-duration: 0.1s;
+    }
+    
+    .fade-in {
+        animation: none;
+    }
+    
+    .pulse-animation {
+        animation: none;
+    }
+    
+    .glow-effect {
+        animation: none;
+    }
+}
+
+/* Optimizări pentru scroll */
+.game-container {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+/* Contain pentru animații */
+.card {
+    contain: layout style paint;
+}
+
+.modal {
+    contain: layout style;
+}
+
+/* GPU acceleration pentru elemtente critice */
+.game-grid,
+.game-header,
+.loading-screen {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Preconnect pentru resurse externe */
+/* Aceste link-uri ar trebui adăugate în HTML head:
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://api.github.com">
+*/
+
+/* Optimizări pentru rendering */
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Permite selectarea textului pentru anumite elemente */
+.modal p,
+.toast,
+.score-display {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* Critical CSS - stiluri esențiale pentru primul render */
+.critical {
+    display: block;
+    opacity: 1;
+    transform: none;
+}
+
+/* Lazy loading pentru componente non-critice */
+.non-critical {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.non-critical.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optimizări pentru memoria video */
+@media (max-width: 768px) {
+    .card {
+        box-shadow: var(--shadow-sm); /* Reduce shadow complexity pe mobile */
+    }
+    
+    .modal {
+        backdrop-filter: blur(10px); /* Reduce blur pe mobile */
+    }
+}
+
+/* Optimizări pentru dispozitive cu densitate mare de pixeli */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .game-canvas {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
